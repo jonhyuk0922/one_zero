@@ -17,7 +17,7 @@ st.markdown("<br>", unsafe_allow_html=True)  # 브라우저에 줄 바꿈을 삽
 # 사용자로부터 캐릭터를 선택받기 위한 드롭다운 메뉴 설정
 character_name = st.selectbox(
     "**캐릭터를 골라줘!**",
-    ("baby_shark", "one_zero"),
+    ("one_zero", "baby_shark"),
     index=0,
     key="character_name_select",
 )
