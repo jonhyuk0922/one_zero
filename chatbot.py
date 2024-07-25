@@ -13,7 +13,7 @@ from utils import load_model, set_memory, initialize_chain, generate_message
 # 애플리케이션 제목 설정
 st.title("페르소나 챗봇")
 st.markdown("<br>", unsafe_allow_html=True)  # 브라우저에 줄 바꿈을 삽입합니다.
-
+st.image("원영적사고.png",caption="나는 장원영,럭키비키잖아✨",width=250)
 # 사용자로부터 캐릭터를 선택받기 위한 드롭다운 메뉴 설정
 character_name = st.selectbox(
     "**캐릭터를 골라줘!**",
@@ -51,7 +51,7 @@ def start_chat() -> None:
     """
     llm = load_model(st.session_state.model_name)  # 선택된 모델을 로드합니다.
     st.session_state.chat_started = True  # 채팅 시작 상태를 True로 설정합니다.
-    st.set_memory = set_memory()  # 메모리를 초기화합니다.
+    st.session_state.memory = set_memory()  # 메모리를 초기화합니다.
     st.session_state.chain = initialize_chain(
         llm, st.session_state.character_name, st.session_state.memory
     )  # 체인을 초기화합니다.
@@ -76,7 +76,7 @@ if st.session_state.chat_started:
             role = "assistant"  # AIMessage는 "assistant" 역할로 설정
         else:
             continue
-        with st.chat_message(role):  # 해당 역할로 메시지를 화면에 표시
+        with st.chat_message(role):  # 해당 역할로 메시지를 화면에 표시                
             st.markdown(message.content)
 
     # 사용자가 입력한 새로운 메시지를 처리
